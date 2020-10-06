@@ -413,7 +413,7 @@ class Buffer : public muduo::copyable
   size_t readerIndex_;
   size_t writerIndex_;
 
-  static const char kCRLF[];
+  constexpr static char kCRLF[]="\r\n";
 };
 
 }  // namespace net
