@@ -39,11 +39,10 @@ class TimerQueue;
 class EventLoop : noncopyable
 {
  public:
-  typedef std::function<void()> Functor;
-
   EventLoop();
   ~EventLoop();  // force out-line dtor, for std::unique_ptr members.
 
+  typedef std::function<void()> Functor;
   ///
   /// Loops forever.
   ///
@@ -145,8 +144,8 @@ class EventLoop : noncopyable
   const pid_t threadId_;
   Timestamp pollReturnTime_;
   std::unique_ptr<Poller> poller_;
-  std::unique_ptr<TimerQueue> timerQueue_;
-  int wakeupFd_;
+  std::unique_ptr<TimerQueue> timerQueue_;//timerfd_create 
+  int wakeupFd_; //eventfd (unsigned int __count, int __flags)
   // unlike in TimerQueue, which is an internal class,
   // we don't expose Channel to client.
   std::unique_ptr<Channel> wakeupChannel_;
