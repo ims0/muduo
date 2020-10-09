@@ -31,11 +31,10 @@ class Channel;
 class Poller : noncopyable
 {
  public:
-  typedef std::vector<Channel*> ChannelList;
-
   Poller(EventLoop* loop);
   virtual ~Poller();
 
+  typedef std::vector<Channel*> ChannelList;
   /// Polls the I/O events.
   /// Must be called in the loop thread.
   virtual Timestamp poll(int timeoutMs, ChannelList* activeChannels) = 0;
