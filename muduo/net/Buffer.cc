@@ -20,6 +20,7 @@ using namespace muduo::net;
 
 const size_t Buffer::kCheapPrepend;
 const size_t Buffer::kInitialSize;
+const char Buffer::kCRLF[] = "\r\n";
 
 ssize_t Buffer::readFd(int fd, int* savedErrno)
 {
